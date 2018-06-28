@@ -21,7 +21,7 @@ app.get('/questions/:id/stats', (req, res) => {
         count: 3
       },
       {
-        answer: 'Foo',
+        answer: 'Bar',
         count: 6
       }
     ]
