@@ -50,7 +50,7 @@ app.get('/fake/new_question', function(req, res) {
     'data.timeout': 5,
     'data.question_id': 1,
     'data.question': 'Test',
-    'data.answers': ['Foo', 'Bar']
+    'data.answers': "['Foo', 'Bar']"
   };
 
   gcm.send(message, function(err, messageId) {
