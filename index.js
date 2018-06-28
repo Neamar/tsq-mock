@@ -40,9 +40,26 @@ app.post('/users', (req, res) => {
 app.listen(process.env.PORT || 3000, () => console.log('Mock listening!'));
 
 
-module.exports.signalNewQuestion = function() {
+
+app.get('/fake/new_question', function(req, res) {
   // {question: "Test", answers: ["Foo", "Bar"], timeout: 5, id: 1}
-};
+  const message = {
+    registration_id: 'eBjNyz5Pg90:APA91bEi2IPqklgAJchcB1Er-tv-GjXQrtwRPIOQy4V_SkfDR6jhWlI95DjWbNR1A4IRbCWr2B3dtmNQ0U89hf96_JKbEVobr7cDYxjwYw_xhrQ-Gy9REhHgwJQVzpYYaMwI09O9_V-MeZRod29YrRqO_lLpeGyeSw',
+    'data.type': 'new_question',
+    'data.question': 'Test',
+    'data.answers': ['Foo', 'Bar']
+  };
+
+  gcm.send(message, function(err, messageId) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log('Sent with message ID: ', messageId);
+      res.send(messageId)
+    }
+  });
+});
 
 
 module.exports.signalLeaderboardUpdate = function() {
