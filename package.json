@@ -1,0 +1,22 @@
+{
+  "name": "tsq-mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neamar/tsq-mock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neamar/tsq-mock/issues"
+  },
+  "homepage": "https://github.com/Neamar/tsq-mock#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
