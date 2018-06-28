@@ -18,11 +18,11 @@ app.get('/questions/:id/stats', (req, res) => {
     answers: [
       {
         answer: 'Foo',
-        percentage: 32
+        count: 3
       },
       {
         answer: 'Foo',
-        percentage: 68
+        count: 6
       }
     ]
   });
@@ -105,7 +105,7 @@ app.get('/fake/new_question', function(req, res) {
     'data.type': 'new_question',
     'data.timeout': 5,
     'data.question_id': 1,
-    'data.question': 'Alberto or foo or bar?',
+    'data.question': 'Alberto or foo or bar' + Math.random() + '?',
     'data.answers': `[{"answer":"Foo", "percentage": 25}, {"answer":"Bar", "percentage": 25}]`
   };
 
