@@ -30,7 +30,7 @@ app.get('/leaderboard', (req, res) => {
 });
 
 
-app.post('/username', (req, res) => {
+app.post('/user', (req, res) => {
   console.log('Received username');
   res.send('POSTED answer');
 });
