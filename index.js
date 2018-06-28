@@ -110,7 +110,7 @@ app.get('/fake/new_answer', function(req, res) {
   send(message, res);
 });
 
-app.get('/fake/new_leaderboard', function(req, res) {
+app.get('/fake/leaderboard_update', function(req, res) {
   const message = {
     registration_id: 'eBjNyz5Pg90:APA91bEi2IPqklgAJchcB1Er-tv-GjXQrtwRPIOQy4V_SkfDR6jhWlI95DjWbNR1A4IRbCWr2B3dtmNQ0U89hf96_JKbEVobr7cDYxjwYw_xhrQ-Gy9REhHgwJQVzpYYaMwI09O9_V-MeZRod29YrRqO_lLpeGyeSw',
     time_to_live: 0,
@@ -118,10 +118,17 @@ app.get('/fake/new_leaderboard', function(req, res) {
   };
 
   send(message, res);
-
 });
 
 
-module.exports.signalGameEnded = function() {
-  // {id: 123, rank: 5, playerCount: 10}
-};
+
+app.get('/fake/game_ended', function(req, res) {
+  const message = {
+    registration_id: 'eBjNyz5Pg90:APA91bEi2IPqklgAJchcB1Er-tv-GjXQrtwRPIOQy4V_SkfDR6jhWlI95DjWbNR1A4IRbCWr2B3dtmNQ0U89hf96_JKbEVobr7cDYxjwYw_xhrQ-Gy9REhHgwJQVzpYYaMwI09O9_V-MeZRod29YrRqO_lLpeGyeSw',
+    time_to_live: 0,
+    'data.type': 'game_ended',
+    'data.rank': 1
+  };
+
+  send(message, res);
+});
