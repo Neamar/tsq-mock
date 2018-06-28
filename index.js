@@ -12,7 +12,7 @@ app.post('/questions/:id', (req, res) => {
   res.send({ok: true});
 });
 
-app.post('/questions/:id/stats', (req, res) => {
+app.get('/questions/:id/stats', (req, res) => {
   res.send({
     question: 'This was my question',
     answers: [
