@@ -93,9 +93,11 @@ function send(message, res) {
   });
 }
 
+app.get('/', function(req, res) {
+  res.send(`<a href="/fake/new_question" target="_blank">Send question</a> <a href="/fake/leaderboard_update" target="_blank">Send leaderboard update</a> <a href="/fake/game_ended" target="_blank">Send game end</a>`)
+});
 
-
-app.get('/fake/new_answer', function(req, res) {
+app.get('/fake/new_question', function(req, res) {
   // {question: "Test", answers: ["Foo", "Bar"], timeout: 5, id: 1}
   const message = {
     registration_id: 'eBjNyz5Pg90:APA91bEi2IPqklgAJchcB1Er-tv-GjXQrtwRPIOQy4V_SkfDR6jhWlI95DjWbNR1A4IRbCWr2B3dtmNQ0U89hf96_JKbEVobr7cDYxjwYw_xhrQ-Gy9REhHgwJQVzpYYaMwI09O9_V-MeZRod29YrRqO_lLpeGyeSw',
