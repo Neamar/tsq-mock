@@ -35,7 +35,7 @@ app.get('/leaderboard', (req, res) => {
       rank: 1,
       name: 'Matthieu',
       id: 123,
-      points: 10,
+      points: Math.round(1000 * Math.random()),
     },
     {
       rank: 2,
@@ -80,6 +80,21 @@ app.get('/fake/new_question', function(req, res) {
 });
 
 
+
+function send(message, res) {
+  gcm.send(message, function(err, messageId) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log('Sent with message ID: ', messageId);
+      res.send({id:messageId, message: message});
+    }
+  });
+}
+
+
+
 app.get('/fake/new_answer', function(req, res) {
   // {question: "Test", answers: ["Foo", "Bar"], timeout: 5, id: 1}
   const message = {
@@ -92,20 +107,19 @@ app.get('/fake/new_answer', function(req, res) {
     'data.answers': `[{"answer":"Foo", "percentage": 25}, {"answer":"Bar", "percentage": 25}]`
   };
 
-  gcm.send(message, function(err, messageId) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      console.log('Sent with message ID: ', messageId);
-      res.send(messageId);
-    }
-  });
+  send(message, res);
 });
 
-module.exports.signalLeaderboardUpdate = function() {
-  // {id: 123}
-};
+app.get('/fake/new_leaderboard', function(req, res) {
+  const message = {
+    registration_id: 'eBjNyz5Pg90:APA91bEi2IPqklgAJchcB1Er-tv-GjXQrtwRPIOQy4V_SkfDR6jhWlI95DjWbNR1A4IRbCWr2B3dtmNQ0U89hf96_JKbEVobr7cDYxjwYw_xhrQ-Gy9REhHgwJQVzpYYaMwI09O9_V-MeZRod29YrRqO_lLpeGyeSw',
+    time_to_live: 0,
+    'data.type': 'leaderboard_update'
+  };
+
+  send(message, res);
+
+});
 
 
 module.exports.signalGameEnded = function() {
