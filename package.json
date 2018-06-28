@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Neamar/tsq-mock#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "gcm": "git+https://git@github.com/neamar/node-gcm.git"
   }
 }

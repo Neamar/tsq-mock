@@ -1,9 +1,11 @@
 'use strict';
 
 const express = require('express');
-
+const GCM = require('gcm').GCM;
 const app = express();
 
+
+var gcm = new GCM(process.env.GCM_KEY);
 
 app.post('/question/:id', (req, res) => {
   console.log('Posted answer');
@@ -30,7 +32,7 @@ app.get('/leaderboard', (req, res) => {
 });
 
 
-app.post('/user', (req, res) => {
+app.post('/users', (req, res) => {
   console.log('Received username');
   res.send({ok: true});
 });
