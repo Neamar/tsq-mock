@@ -9,9 +9,24 @@ var gcm = new GCM(process.env.GCM_KEY);
 
 app.post('/questions/:id', (req, res) => {
   console.log('Posted answer');
-  res.send('POSTED answer');
+  res.send({ok: true});
 });
 
+app.post('/questions/:id/stats', (req, res) => {
+  res.send({
+    question: 'This was my question',
+    answers: [
+      {
+        answer: 'Foo',
+        percentage: 32
+      },
+      {
+        answer: 'Foo',
+        percentage: 68
+      }
+    ]
+  });
+});
 
 app.get('/leaderboard', (req, res) => {
   console.log('Asked for leaderboard');
