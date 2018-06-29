@@ -30,7 +30,7 @@ app.get('/questions/:id/stats', (req, res) => {
 
 app.get('/leaderboard', (req, res) => {
   console.log('Asked for leaderboard');
-  res.send([
+  let a = [
     {
       rank: 1,
       name: 'Matthieu',
@@ -41,9 +41,31 @@ app.get('/leaderboard', (req, res) => {
       rank: 2,
       name: 'Alberto',
       id: 456,
-      points: 5,
+      points: Math.round(800 * Math.random()),
+    },
+    {
+      rank: 2,
+      name: 'Tatiana',
+      id: 456,
+      points: Math.round(600 * Math.random()),
+    },
+    {
+      rank: 2,
+      name: 'Stéphane',
+      id: 456,
+      points: Math.round(500 * Math.random()),
+    },
+    {
+      rank: 2,
+      name: 'Paulie',
+      id: 456,
+      points: Math.round(500 * Math.random()),
     }
-  ]);
+  ];
+
+  a.sort((a,b) => b.points - a.points);
+  a.forEach((a, i) => a.rank = i + 1);
+  res.send(a);
 });
 
 
